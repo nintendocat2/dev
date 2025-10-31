@@ -1,0 +1,15 @@
+use context dcic2024
+include data-source
+
+student_score =
+  load-table: Name, Surname, Email, Score
+    source: my-files("students_gate_exam_score.csv")
+    sanitize Name using string-sanitizer
+    sanitize Surname using string-sanitizer
+    sanitize Email using string-sanitizer
+    sanitize Score using num-sanitizer
+  end
+
+# Optional checks:
+# student_score.length()
+# mean(student_score, "Score")
